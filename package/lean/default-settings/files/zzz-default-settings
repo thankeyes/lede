@@ -3,8 +3,9 @@
 uci set luci.main.lang=zh_cn
 uci commit luci
 
-uci set system.@system[0].timezone=CST-8
-uci set system.@system[0].zonename=Asia/Shanghai
+uci set system.@system[0].hostname='ledelede'
+uci set system.@system[0].zonename='America/New York'
+uci set system.@system[0].timezone='EST5EDT,M3.2.0,M11.1.0'
 uci commit system
 
 uci set fstab.@global[0].anon_mount=1
@@ -40,11 +41,24 @@ sed -i 's/root::0:0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999
 
 sed -i "s/# //g" /etc/opkg/distfeeds.conf
 
-uci set dhcp.lan.ra='server'
-uci set dhcp.lan.dhcpv6='server'
-uci set dhcp.lan.ra_management='1'
-uci set dhcp.lan.ra_default='1'
+##uci set dhcp.lan.ra='server'
+##uci set dhcp.lan.dhcpv6='server'
+##uci set dhcp.lan.ra_management='1'
+##uci set dhcp.lan.ra_default='1'
+
+uci set dhcp.lan.start='100'
+uci set dhcp.lan.limit='90'
+uci set dhcp.lan.leasetime='24h'
+uci set dhcp.@dnsmasq[0].server='114.114.114.114'
 uci commit dhcp
+
+uci set network.wan6.auto='0'
+uci set network.wan.metric='8'
+uci set network.wan.peerdns='0'
+uci set network.wan.dns='127.0.0.1'
+
+uci commit network
+
 
 #sed -i '/REDIRECT --to-ports 53/d' /etc/firewall.user
 echo "iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53" >> /etc/firewall.user
