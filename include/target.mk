@@ -20,7 +20,7 @@ luci-app-filetransfer luci-app-vsftpd ddns-scripts_aliyun \
 luci-app-pptp-server luci-app-arpbind luci-app-vlmcsd luci-app-wifischedule luci-app-wol luci-app-ramfree \
 luci-app-sfe luci-app-flowoffload luci-app-nlbwmon luci-app-usb-printer luci-app-accesscontrol luci-app-zerotier luci-app-xlnetacc \
 luci-app-nlbwmon mtr iperf3 tcpdump socat netcat frpc minivtun ShadowVPN openvpn-openssl xl2tpd \
-luci-app-ssr-plus bind-dig iftop luci-app-ssrserver-python \
+luci-app-ssr-plus bind-dig iftop luci-app-ssrserver-python curl lrzsz\
 luci-app-ttyd luci-app-wrtbwmon ssmtp sudo luci-proto-wireguard
 # For nas targets
 DEFAULT_PACKAGES.nas:=fdisk lsblk mdadm automount autosamba luci-app-usb-printer 
